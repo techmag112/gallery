@@ -31,7 +31,6 @@ class Database {
                 $i++;
             }
         }
-
         if(!$this->query->execute()) {
             $this->error = true;
         } else {
@@ -62,34 +61,6 @@ class Database {
     }
 
     public function action($action, $table, $where) {
-        // switch ($where) {
-        //     case 6:
-        //         [$field1, $operator1, $value1, $field2, $operator2, $value2] = $where;
-        //         $operators = ['=', '>', '<', '>=', '<='];
-        //         if(in_array($operator1, $operators) and in_array($operator2, $operators)) {
-        //             $sql = "{$action} FROM {$table} WHERE {$field1} {$operator1} ? AND {$field2} {$operator2} ?";
-        //             if(!$this->query($sql, [$value1, $value2])->error()) {
-        //                 return $this;
-        //             }
-        //         }
-        //         break;
-        //     case 3:
-        //         [$field, $operator, $value] = $where;
-        //         $operators = ['=', '>', '<', '>=', '<='];
-        //         if(in_array($operator, $operators)) {
-        //             $sql = "{$action} FROM {$table} WHERE {$field} {$operator} ?";
-        //             if(!$this->query($sql, [$value])->error()) {
-        //                 return $this;
-        //             }
-        //         }
-        //         break;
-        //     case 0:
-        //         $sql = "{$action} FROM {$table}";
-        //         if(!$this->query($sql)->error()) {
-        //             return $this;
-        //         }
-        //         break;
-        // }
         if(count($where) === 3) {
             [$field, $operator, $value] = $where;
             $operators = ['=', '>', '<', '>=', '<='];

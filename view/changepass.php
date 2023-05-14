@@ -28,8 +28,7 @@ if(Input::exists()) {
             } else {
                 echo 'Текущий пароль неверен';
             }
-            //$user = new User();
-                
+                           
         } else {
             foreach($validation->error() as $error) {
                 echo $error . '<br>';
@@ -47,9 +46,10 @@ if(Input::exists()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Галерея изображений</title>
 </head>
 <body>
+<div class="container">
     <nav>
         <ul class="menu-main">
         <li><a href="/">Приветствуем, <?= $user->data()->username ?></a></li>
@@ -62,27 +62,28 @@ if(Input::exists()) {
 
     <?= Session::showFlash(); ?>
 
-<form action="" method="post">
+<form action="" method="post" class="col-12">
     <div class="field">
-            <label for="currentpass">Enter current password</label>
-            <input type="password" name="current_pass">
+            <label for="currentpass" class="form-label">Enter current password</label>
+            <input type="password" name="current_pass" class="form-control">
         </div>
 
         <div class="field">
-            <label for="">New password</label>
-            <input type="password" name="new_pass">
+            <label for="" class="form-label">New password</label>
+            <input type="password" name="new_pass" class="form-control">
         </div>
         
         <div class="field">
-            <label for="">New password again</label>
-            <input type="password" name="new_pass_again">
+            <label for="" class="form-label">New password again</label>
+            <input type="password" name="new_pass_again" class="form-control">
         </div>
-
+        <br>
         <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"> 
         <div class="field">
-            <button type="submit">Обновить</button>
+            <button type="submit" class="w-100 btn btn-primary btn-lg">Обновить</button>
         </div>
         
 </form>
+</div>
 </body>
 </html>

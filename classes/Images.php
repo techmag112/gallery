@@ -13,7 +13,7 @@ class Images {
 		return $a;
 	}
 
-	public function putImage($file, $id_user) { // $_FILES['file']
+	public function putImage($file, $id_user) { 
 		// если была произведена отправка формы
 	    if(is_array($file)) {
 			// проверяем, можно ли загружать изображение

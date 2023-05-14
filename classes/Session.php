@@ -21,14 +21,9 @@ class Session {
         return $_SESSION[$name];
     }
 
-    public static function setFlash($string = '', $style = 'success') {
-        //if(self::exists('message') && self::get('message') !== '') {
-        //    self::delete('message');
-        //} else {
-            $string = '<div class="alert alert-' . $style .  '" role="alert">' . $string . '</div>';
-            self::put('message', $string);
-        //}   
-
+    public static function setFlash($string, $style = 'success') {
+        $string = '<div class="alert alert-' . $style .  '" role="alert">' . $string . '</div>';
+        self::put('message', $string);
     }
 
     public static function showFlash() {

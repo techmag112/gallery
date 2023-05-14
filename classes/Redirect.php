@@ -2,15 +2,14 @@
 
 class Redirect {
     public static function to($location = null) {
-        if($location) {
-            if(is_numeric($location)) {
-                switch ($location) {
-                    case 404:
-                        header('HTTP/1.0 404 Not Found');
-                        //include '404.php';
-                        exit;
-                    break;
-                }
+
+        if(!stristr($location,'?')) {
+          if (!file_exists($location)) {
+                $location = '../404.php';
+          }
+        } else {
+            if (!file_exists(stristr($location,'?',true))) {
+                $location = '../404.php';
             }
         }
         header('Location: ' . $location);
