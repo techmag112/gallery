@@ -30,6 +30,7 @@ if(Input::exists()) {
             }
                            
         } else {
+            $errors = '';
             foreach($validation->error() as $error) {
                 $errors .= $error . '<br>';
             }

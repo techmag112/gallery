@@ -14,7 +14,7 @@ session_start();
 
 $GLOBALS['config']  =   [
     'mysql' => [
-        'host' => 'localhost:3400',
+        'host' => 'localhost',
         'username' => 'root',
         'password' => '',
         'database' => 'project',

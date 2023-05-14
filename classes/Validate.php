@@ -14,33 +14,33 @@ class Validate {
                 $value = $source[$item];
 
                 if($rule == 'required' && empty($value)) {
-                    $this->addError("{$item} is required");
+                    $this->addError("{$item} обязателен!");
                 } else if(!empty($value)) {
                     switch ($rule) {
                         case 'min':
                             if(strlen($value) < $rule_value) {
-                                $this->addError("{$item} must be a minimum of {$rule_value} characters");
+                                $this->addError("{$item} должен быть минимум {$rule_value} символов.");
                             }
                         break;
                         case 'max':
                             if(strlen($value) > $rule_value) {
-                                $this->addError("{$item} must be a maximum of {$rule_value} characters");
+                                $this->addError("{$item} должен быть максимум {$rule_value} символов.");
                             }
                         break;
                         case 'matches':
                             if($value != $source[$rule_value]) {
-                                $this->addError("{$rule_value} must match {$item}");
+                                $this->addError("{$rule_value} должен совпадать с {$item}");
                             }
                         break;
                         case 'unique':
                             $check = $this->db->get($rule_value, [$item, '=', $value]);
                             if($check->count()) {
-                                $this->addError("{$item} already exists");
+                                $this->addError("{$item} уже существует!");
                             }
                         break;
                         case 'email':
                             if(!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                                $this->addError("{$item} is not an email");
+                                $this->addError("{$item} не похож на email");
                             }
                         break;
                     }

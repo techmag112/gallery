@@ -24,6 +24,7 @@ if(Input::exists()) {
             Session::setflash('Успешно обновлено!');
             Redirect::to('../index.php');
         } else {
+            $errors = '';
             foreach($validation->error() as $error) {
                 $errors .= $error . '<br>';
             }
