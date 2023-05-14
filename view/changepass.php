@@ -26,13 +26,14 @@ if(Input::exists()) {
                 Session::setflash('Пароль успешно изменен.');
                 Redirect::to('../index.php');
             } else {
-                echo 'Текущий пароль неверен';
+                Session::setFlash('Текущий пароль неверен', "danger");    
             }
                            
         } else {
             foreach($validation->error() as $error) {
-                echo $error . '<br>';
+                $errors .= $error . '<br>';
             }
+            Session::setFlash($errors, "danger");
         }
     }
 }

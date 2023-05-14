@@ -25,8 +25,9 @@ if(Input::exists()) {
             Redirect::to('../index.php');
         } else {
             foreach($validation->error() as $error) {
-                echo $error . '<br>';
+                $errors .= $error . '<br>';
             }
+            Session::setFlash($errors, "danger");
         }
     }
 }
