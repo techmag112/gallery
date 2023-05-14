@@ -10,7 +10,7 @@ if(Input::exists('get')) {
 }
 if(Input::exists()) {
     if(Token::check(Input::get('token'))) {
-        $db->insert(Config::get('comments.table'), ['id_img' => $id_image, 'post' => htmlspecialchars($_POST['comment']), 'owner_username' => $user->data()->username]);
+        $db->insert(Config::get('comments.table'), ['id_img' => $id_image, 'post' => htmlspecialchars($_POST['comment']), 'owner_id' => $user->data()->id, 'owner_username' => $user->data()->username]);
     }   
 }
 $comments = $db->get(Config::get('comments.table'), ['id_img', '=', $id_image])->results();
@@ -51,6 +51,7 @@ $comments = $db->get(Config::get('comments.table'), ['id_img', '=', $id_image])-
             <tbody>
             <?php foreach ($comments as $post): ?>
                 <tr>
+                    <td><?php if($post->owner_id == $user->data()->id): ?><a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="del_comment.php?id=<?=$id_image?>&id2=<?=$post->id?>">X</a><?php endif; ?></td>
                     <td><?= $post->date ?></td><td><?= $post->owner_username ?></td><td><?= $post->post ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -83,14 +84,14 @@ $comments = $db->get(Config::get('comments.table'), ['id_img', '=', $id_image])-
     <hr>
 
     <img src="\uploads\img\<?= $image ?>" class="img-fluid"> 
-    
+
     <hr>
     <?php if(!empty($comments)): ?>
         <table class="table table-striped">
             <tbody>
             <?php foreach ($comments as $post): ?>
                 <tr>
-                    <td><?= $post->date ?></td><td><?= $post->owner_username ?></td><td><?= $post->post ?></td>
+                    <td></td><td><?= $post->date ?></td><td><?= $post->owner_username ?></td><td><?= $post->post ?></td>
                 </tr>
             <?php endforeach; ?>
             <tbody>

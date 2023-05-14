@@ -45,7 +45,6 @@ $gallery = $images->getAllImage();
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="\uploads\img\<?= $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
 
             <div class="card-body">
-              <p class="card-text">Краткое описание.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='./view/comment.php?id=<?=$image->id?>'">Комментарии</button>
@@ -89,7 +88,6 @@ $gallery = $images->getAllImage();
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="\uploads\img\<?= $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
 
             <div class="card-body">
-              <p class="card-text">Краткое описание.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='./view/comment.php?id=<?=$image->id?>'">Комментарии</button>
