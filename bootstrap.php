@@ -9,12 +9,13 @@ require_once 'classes/Session.php';
 require_once 'classes/User.php';
 require_once 'classes/Redirect.php';
 require_once 'classes/Images.php';
+require_once 'classes/Cookie.php';
 
 session_start();
 
 $GLOBALS['config']  =   [
     'mysql' => [
-        'host' => 'localhost',
+        'host' => 'localhost:3400',
         'username' => 'root',
         'password' => '',
         'database' => 'project',
@@ -32,5 +33,11 @@ $GLOBALS['config']  =   [
     'comments' => [
         'table' => "comments"
     ],
+    'cookie' => [
+        'cookie_name' => 'hash',
+        'cookie_expiry' => 604800,
+        'cookie_table' => 'user_sessions',
+    ]
 ];
 
+Cookie::autologin();

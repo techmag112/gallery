@@ -66,17 +66,17 @@ if(Input::exists()) {
 
 <form action="" method="post" class="col-12">
     <div class="field">
-            <label for="currentpass" class="form-label">Enter current password</label>
+            <label for="currentpass" class="form-label">Введите текущий пароль</label>
             <input type="password" name="current_pass" class="form-control">
         </div>
 
         <div class="field">
-            <label for="" class="form-label">New password</label>
+            <label for="" class="form-label">Новый пароль</label>
             <input type="password" name="new_pass" class="form-control">
         </div>
         
         <div class="field">
-            <label for="" class="form-label">New password again</label>
+            <label for="" class="form-label">Новый пароль еще раз</label>
             <input type="password" name="new_pass_again" class="form-control">
         </div>
         <br>

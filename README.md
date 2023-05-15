@@ -21,6 +21,7 @@
 * Вывод флеш сообщений о выполнении операции.
 * Верификация ввода данных кодированным токеном.
 * Защита от ввода спецсимволов в комментариях. 
+* Запомнинание регистрации в cookie.
 
 ## Как запустить проект:
 1. Создать в MySQL базу project.
@@ -44,13 +45,16 @@ CREATE TABLE `comments` (
   `owner_username` varchar(255) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `user_sessions` (
+  `user_id` int NOT NULL,
+  `hash` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 3. Поместить код в папку локального сервера localhost
 4. Запустить файл index.php
 
 ## TODO:
-1. Сохранение регистрации в cookie.
-2. Единая точка входа.
-3. Пагинация.
+1. Единая точка входа.
+2. Пагинация.
 
 
 

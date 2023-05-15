@@ -1,11 +1,13 @@
 <?php
 
 class User {
-    private $db, $data, $session_name, $isLoggedIn;
+    private $db, $data, $session_name, $isLoggedIn, $cookieName;
 
     public function __construct($user = null) {
         $this->db = Database::getInstance();
         $this->session_name = Config::get('session.user_session');
+        $this->cookieName = Config::get('cookie.cookie_name');
+
 
         if(!$user) { 
                 if(Session::exists($this->session_name)) {
@@ -31,7 +33,20 @@ class User {
             if($user) {
                 if(password_verify($password, $this->data()->password)) {
                     Session::put($this->session_name , $this->data()->id);
-
+                    // Если стоит чек Запомнить проверяем хек в куках
+                    if($remember) {
+                        $hash = hash('sha256', uniqid());
+                        $hashCheck = $this->db->get(Config::get('cookie.cookie_table'), ['user_id', '=', $this->data->id]);
+                        if(!$hashCheck->count()) {
+                            $this->db->insert(Config::get('cookie.cookie_table'), [
+                                'user_id' => $this->data()->id,
+                                'hash' => $hash
+                            ]);
+                        } else {
+                            $hash = $hashCheck->first()->hash;
+                        }
+                        Cookie::put($this->cookieName, $hash, Config::get('cookie.cookie_expiry'));
+                    }
                     return true;
                 }
             }
@@ -63,6 +78,8 @@ class User {
 
     public function logout() {
         Session::delete($this->session_name);
+        $this->db->delete('user_sessions', ['user_id', '=', $this->data()->id]);
+        Cookie::delete($this->cookieName);
     }
 
     public function exists() {
