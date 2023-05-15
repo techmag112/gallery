@@ -1,9 +1,9 @@
 <nav>
         <ul class="menu-main">
             <li><a href="/">Приветствуем, <?= $username ?></a></li>
-            <li><a href="/view/update.php">Обновить профиль</a></li>
-            <li><a href="/view/changepass.php">Изменить пароль</a></li>
-            <li><a href="/view/logout.php">Выход</a></li>
+            <li><a href="/update">Обновить профиль</a></li>
+            <li><a href="/changepass">Изменить пароль</a></li>
+            <li><a href="/logout">Выход</a></li>
         </ul>
 </nav>
     <hr>

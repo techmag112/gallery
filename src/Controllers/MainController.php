@@ -21,7 +21,7 @@ class MainController {
         if($this->user->isLoggenIn()) {
             $this->view->render('main_auth', array('gallery' => $this->images->getAllImage(), 'username' => $this->user->data()->username, 'id_user' => $this->user->data()->id));
         } else {
-            $this->view->render('main_no_auth', [$gallery => $this->images->getAllImage()]);
+            $this->view->render('main_no_auth', ['gallery' => $this->images->getAllImage()]);
         }
 
     }

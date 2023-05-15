@@ -1,8 +1,8 @@
 <nav>
         <ul class="menu-main">
             <li><a href="/">Приветствуем, незнакомец</a></li>
-            <li><a href="/view/login.php">Войти</a></li>
-            <li><a href="/view/register.php">Регистрация</a></li>
+            <li><a href="/login">Войти</a></li>
+            <li><a href="/register">Регистрация</a></li>
         </ul>
     </nav>
     <hr>
