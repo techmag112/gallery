@@ -118,7 +118,7 @@ class Database {
     }
 
     public function first() {
-        return $this->results()[0];
+        return $this->results()[0] ?? null;
     }
 
 }

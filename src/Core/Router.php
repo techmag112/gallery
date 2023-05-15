@@ -23,14 +23,9 @@ class Router {
          }
          $uri = rawurldecode($uri);
 
-         if (isset($this->routes[$uri])) {
-            $action = $this->routes[$uri][1] ?? 'mainAction';
-            $controller = new $this->routes[$uri][0];
-            $controller->$action(mb_strtolower($httpMethod));
-        } else {
-            $action = 'pageNotFound';
-        }
-
+          $action = $this->routes[$uri][1] ?? 'mainAction';
+          $controller = isset($this->routes[$uri][0]) ? new $this->routes[$uri][0] : new ErrorController();
+          $controller->$action(mb_strtolower($httpMethod));
 
     }
 
