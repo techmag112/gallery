@@ -19,9 +19,9 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='./view/comment.php?id=<?=$image->id?>'">Комментарии</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='/comment?id=<?=$image->id?>'">Комментарии</button>
                   <?php if(($image->owner) == ($id_user)): ?>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='./view/del_image.php?id=<?=$image->id?>'">Удалить</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='/?id=<?=$image->id?>'">Удалить</button>
                   <?php endif; ?>
                 </div>
               </div>

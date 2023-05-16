@@ -9,8 +9,7 @@ class Images {
 	}
 
 	public function getImage($id_image) {
-		$a = $this->db->get(Config::get('images.table'), ['id', '=', $id_image])->first(); 
-		return $a;
+		return $this->db->get(Config::get('images.table'), ['id', '=', $id_image])->first(); 
 	}
 
 	public function putImage($file, $id_user) { 

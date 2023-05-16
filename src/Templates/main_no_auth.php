@@ -16,7 +16,7 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='./view/comment?id=<?=$image->id?>'">Комментарии</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='/comment?id=<?=$image->id?>'">Комментарии</button>
                 </div>
               </div>
             </div>

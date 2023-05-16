@@ -1,47 +1,16 @@
-<?php
-
-require_once '../bootstrap.php';
-$user = new User;
-$images = new Images();
-$db = Database::getInstance();
-if(Input::exists('get')) {
-    $id_image = Input::get('id');
-    $image = $images->getImage($id_image)->name; 
-}
-if(Input::exists()) {
-    if(Token::check(Input::get('token'))) {
-        $db->insert(Config::get('comments.table'), ['id_img' => $id_image, 'post' => htmlspecialchars($_POST['comment']), 'owner_id' => $user->data()->id, 'owner_username' => $user->data()->username]);
-    }   
-}
-$comments = $db->get(Config::get('comments.table'), ['id_img', '=', $id_image])->results();
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="/css/style.css" rel="stylesheet">
-    <title>Галерея изображений</title>
-</head>
-<body>
-<div class="container">
-<?php if($user->isLoggenIn()): ?>
     <nav>
         <ul class="menu-main">
-            <li><a href="/">Приветствуем, <?= $user->data()->username ?></a></li>
-            <li><a href="/view/update.php">Обновить профиль</a></li>
-            <li><a href="/view/changepass.php">Изменить пароль</a></li>
-            <li><a href="/view/logout.php">Выход</a></li>
+            <li><a href="/">Приветствуем, <?= $username ?></a></li>
+            <li><a href="/update">Обновить профиль</a></li>
+            <li><a href="/changepass">Изменить пароль</a></li>
+            <li><a href="/logout">Выход</a></li>
         </ul>
     </nav>
     <hr>
 
     <?= Session::showFlash(); ?>
 
-    <img src="\uploads\img\<?= $image ?>" class="img-fluid"> 
+    <img src="public\uploads\img\<?= $image ?>" class="img-fluid"> 
   
     <hr>
     <?php if(!empty($comments)): ?>
@@ -49,7 +18,7 @@ $comments = $db->get(Config::get('comments.table'), ['id_img', '=', $id_image])-
             <tbody>
             <?php foreach ($comments as $post): ?>
                 <tr>
-                    <td><?php if($post->owner_id == $user->data()->id): ?><a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="del_comment.php?id=<?=$id_image?>&id2=<?=$post->id?>">X</a><?php endif; ?></td>
+                    <td><?php if($post->owner_id == $id_user): ?><a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="comment?id=<?=$id_image?>&id2=<?=$post->id?>">X</a><?php endif; ?></td>
                     <td><?= $post->date ?></td><td><?= $post->owner_username ?></td><td><?= $post->post ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -68,37 +37,4 @@ $comments = $db->get(Config::get('comments.table'), ['id_img', '=', $id_image])-
             <button type="submit" class="btn btn-primary mb-3">Отправить</button>
         </div>
     </form>
-<?php endif; ?>
-
-<?php if(!$user->isLoggenIn()): ?>
-
-    <nav>
-        <ul class="menu-main">
-            <li><a href="/">Приветствуем, незнакомец</a></li>
-            <li><a href="/view/login.php">Войти</a></li>
-            <li><a href="/view/register.php">Регистрация</a></li>
-        </ul>
-    </nav>
-    <hr>
-
-    <img src="\uploads\img\<?= $image ?>" class="img-fluid"> 
-
-    <hr>
-    <?php if(!empty($comments)): ?>
-        <table class="table table-striped">
-            <tbody>
-            <?php foreach ($comments as $post): ?>
-                <tr>
-                    <td></td><td><?= $post->date ?></td><td><?= $post->owner_username ?></td><td><?= $post->post ?></td>
-                </tr>
-            <?php endforeach; ?>
-            <tbody>
-        </table>
-    <br>
-    <?php endif; ?>
-
-<?php endif; ?>
-</div>
-</body>
-</html>
 

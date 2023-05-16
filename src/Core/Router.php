@@ -6,10 +6,10 @@ class Router {
         '/' => [MainController::class],
         '/login' => [LoginController::class],
         '/logout' => [LoginController::class, 'logoutAction'],
-        '/register' => [RegisterController::class],
-        '/comment' => [CommentController::class],
-        '/del_comment' => [CommentController::class, 'deleteAction'],
-        '/image' => [ImageController::class],
+        '/register' => [LoginController::class, 'regAction'],
+        '/comment' => [CommentController::class], //{id:\d+}'
+        '/update' => [LoginController::class, 'updateAction'],
+        '/changepass' => [LoginController::class, 'changepassAction'],
     ];
 
     public function run() {

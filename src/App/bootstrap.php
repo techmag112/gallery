@@ -14,6 +14,7 @@ require_once 'src' . DIRECTORY_SEPARATOR . 'Core' . DIRECTORY_SEPARATOR .'Router
 require_once 'src' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR .'MainController.php';
 require_once 'src' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR .'LoginController.php';
 require_once 'src' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR .'ErrorController.php';
+require_once 'src' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR .'CommentController.php';
 require_once 'src' . DIRECTORY_SEPARATOR . 'Core' . DIRECTORY_SEPARATOR .'Views.php';
 
 session_start();
