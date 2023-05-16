@@ -16,6 +16,7 @@ class MainController {
             $this->images->removeImage(Input::get('id'));
             $this->db->delete(Config::get('comments.table'), ['id_img', '=', Input::get('id')]);
             Session::setFlash("Изображение успешно удалено");
+            Redirect::to('/');
         } elseif(Input::exists($method)) {
             // Если есть метод POST - добавить картинку
             if(Token::check(Input::get('token'))) {
