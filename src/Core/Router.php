@@ -2,15 +2,21 @@
 
 class Router {
 
-    private array $routes = [
-        '/' => [MainController::class],
-        '/login' => [LoginController::class],
-        '/logout' => [LoginController::class, 'logoutAction'],
-        '/register' => [LoginController::class, 'regAction'],
-        '/comment' => [CommentController::class], //{id:\d+}'
-        '/update' => [LoginController::class, 'updateAction'],
-        '/changepass' => [LoginController::class, 'changepassAction'],
-    ];
+    private array $routes = ['/' => [0],
+                '/login' => [1],
+                '/logout' => [1, 'logoutAction'],
+                '/register' => [1, 'regAction'],
+                '/comment' => [3], 
+                '/update' => [1, 'updateAction'],
+                '/changepass' => [1, 'changepassAction'],
+    ], $controllers = [];
+
+    function __construct(MainController $controller1, LoginController $controller2, ErrorController $controller3, CommentController $controller4) {
+        $this->controllers[0] = $controller1;
+        $this->controllers[1] = $controller2;
+        $this->controllers[2] = $controller3;
+        $this->controllers[3] = $controller4;
+    }
 
     public function run() {
 
@@ -24,7 +30,7 @@ class Router {
          $uri = rawurldecode($uri);
 
           $action = $this->routes[$uri][1] ?? 'mainAction';
-          $controller = isset($this->routes[$uri][0]) ? new $this->routes[$uri][0] : new ErrorController();
+          $controller = isset($this->routes[$uri][0]) ? $this->controllers[$this->routes[$uri][0]] : $this->controllers[2];
           $controller->$action(mb_strtolower($httpMethod));
 
     }

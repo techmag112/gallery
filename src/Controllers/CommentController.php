@@ -4,11 +4,11 @@ class CommentController {
 
     private $user, $images, $db, $view, $id_image, $image_name;
 
-    function __construct() {
-        $this->user = new User();
-        $this->images = new Images();
-        $this->view = new Views();
-        $this->db = Database::getInstance();
+    function __construct(Views $views, User $user, Images $images, Database $db) {
+        $this->user = $user;
+        $this->images = $images;
+        $this->view = $views;
+        $this->db = $db;
     }
 
     public function mainAction($method = 'post') {

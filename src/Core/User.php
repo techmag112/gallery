@@ -3,8 +3,8 @@
 class User {
     private $db, $data, $session_name, $isLoggedIn, $cookieName;
 
-    public function __construct($user = null) {
-        $this->db = Database::getInstance();
+    public function __construct(Database $db, $user = null) {
+        $this->db = $db;
         $this->session_name = Config::get('session.user_session');
         $this->cookieName = Config::get('cookie.cookie_name');
 

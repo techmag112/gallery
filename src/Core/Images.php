@@ -4,8 +4,8 @@ class Images {
 
 	private $db;
 
-	public function __construct() {
-        $this->db = Database::getInstance();
+	public function __construct(Database $db) {
+        $this->db = $db;
 	}
 
 	public function getImage($id_image) {

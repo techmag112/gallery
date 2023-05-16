@@ -4,9 +4,9 @@ class ErrorController {
 
     private $user, $view;
 
-    function __construct() {
-        $this->user = new User();
-        $this->view = new Views();
+    function __construct(User $user, Views $views) {
+        $this->user = $user;
+        $this->view = $views;
      }
 
     public function mainAction($method = 'post') {

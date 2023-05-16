@@ -4,11 +4,11 @@ class MainController {
 
     private $user, $images, $view, $db;
 
-    function __construct() {
-        $this->user = new User();
-        $this->images = new Images();
-        $this->view = new Views();
-        $this->db = Database::getInstance();
+    function __construct(User $user, Images $images, Views $views, Database $db) {
+        $this->user = $user;
+        $this->images = $images;
+        $this->view = $views;
+        $this->db = $db;
     }
 
     public function mainAction($method = 'post') {

@@ -4,10 +4,10 @@ class LoginController {
 
     private $user, $view, $validate;
 
-    function __construct() {
-        $this->user = new User();
-        $this->view = new Views();
-        $this->validate = new Validate();
+    function __construct(User $user, Views $views, Validate $validate) {
+        $this->user = $user;
+        $this->view = $views;
+        $this->validate = $validate;
     }
 
     public function logoutAction() {
@@ -114,7 +114,7 @@ class LoginController {
                     ]);
         
                     Session::setFlash("Регистрация успешно выполнена");
-                    Redirect::to('/');
+                    Redirect::to('/login');
         
                 } else {
                     $errors = '';

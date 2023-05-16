@@ -3,8 +3,8 @@
 class Validate {
     private $passed = false, $errors = [], $db = null;
 
-    public function __construct() {
-        $this->db = Database::getInstance();
+    public function __construct(Database $db) {
+        $this->db = $db;
     }
 
     public function check($source, $items = []) {
