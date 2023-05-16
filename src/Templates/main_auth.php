@@ -15,7 +15,7 @@
         <div class="col">
           <div class="card shadow-sm">
             <?php if(($image->owner) == ($id_user)): ?>
-              <a href='/?id=<?=$image->id?>' onclick="confirm('Вы уверены?');">
+              <a href='/?id=<?=$image->id?>' onclick="return window.confirm('Вы уверены, что хотите удалить?')">
             <?php endif; ?>
               <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="public/uploads/img/<?= $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
             <?php if(($image->owner) == ($id_user)): ?>  
@@ -25,9 +25,9 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="confirm('Вы уверены?'); document.location='/comment?id=<?=$image->id?>'">Комментарии</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.location='/comment?id=<?=$image->id?>'">Комментарии</button>
                   <?php if(($image->owner) == ($id_user)): ?>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="confirm('Вы уверены?'); document.location='/?id=<?=$image->id?>'">Удалить</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" onclick="if (confirm('Вы уверены, что хотите удалить?')) { document.location='/?id=<?=$image->id?>' } ">Удалить</button>
                   <?php endif; ?>
                 </div>
               </div>
