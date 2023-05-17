@@ -17,7 +17,7 @@
             <?php if(($image->owner) == ($id_user)): ?>
               <a href='/?id=<?=$image->id?>' onclick="return window.confirm('Вы уверены, что хотите удалить?')">
             <?php endif; ?>
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="public/uploads/img/<?= $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<?= Config::get('images.path') . $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
             <?php if(($image->owner) == ($id_user)): ?>  
               </a>
             <?php endif; ?>

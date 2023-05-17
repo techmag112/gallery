@@ -10,7 +10,7 @@
 
     <?= Session::showFlash(); ?>
 
-    <img src="public\uploads\img\<?= $image ?>" class="img-fluid"> 
+    <img src="<?= Config::get('images.path') . $image ?>" class="img-fluid"> 
   
     <hr>
     <?php if(!empty($comments)): ?>

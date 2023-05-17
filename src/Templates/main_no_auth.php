@@ -11,7 +11,7 @@
         <?php foreach($gallery as $image): ?>
         <div class="col">
           <div class="card shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="public/uploads/img/<?= $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<?= Config::get('images.path') . $image->name ?>" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
 
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center">

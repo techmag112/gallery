@@ -7,7 +7,7 @@
     </nav>
     <hr>
 
-    <img src="public\uploads\img\<?= $image ?>" class="img-fluid"> 
+    <img src="пш<?= Config::get('images.path') . $image ?>" class="img-fluid"> 
 
     <hr>
     <?php if(!empty($comments)): ?>
